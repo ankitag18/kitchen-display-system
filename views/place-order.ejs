@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Kitchen Display System</title>
+    <link rel="icon" href="favicon.png">
+    <link href='style.css' rel='stylesheet' />
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+    <select id='product'>
+        <option>-- Select Product --</option>
+        <% for(var i in products){ %>
+            <option value=<%=i %>>
+                <%= products[i] %>
+            </option>
+        <% } %>
+    </select>
+    <input id='quantity' placeholder="Enter Quantity" />
+    <button id='placeOrdBtn'>Place Order</button>
+
+    <br>
+    <br>
+    <label>Sales Report</label>
+    <br>
+    <br>
+    <table border=1 cellpadding=10 cellspacing=0 id='placed_order_list'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Created-till-now</th>
+                <th>Predicted</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < data[0].placed_orders.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= products[data[0].placed_orders[i].product] %>
+                    </td>
+                    <td>
+                        <%= data[0].placed_orders[i].quantity %>
+                    </td>
+                    <td>
+                        <%= data[0].placed_orders[i].created_till %>
+                    </td>
+                    <td><%= data[0].placed_orders[i].predicted_sale %></td>
+                    <td>
+                        <% if(!data[0].placed_orders[i].status){ %>
+                            <button type='button' class='order_completed' value=<%= data[0].placed_orders[i].product %>>Done</button>
+                        <% } else { %>
+                                <span>Order Completed</span>
+                        <% } %>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- Custom js -->
+    <script src='product.js'></script>
+    <!-- -->
+</body>
+
+</html>

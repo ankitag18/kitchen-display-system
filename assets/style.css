@@ -1,0 +1,37 @@
+body{
+    background-color: #cccccc
+}
+
+.header-menu{
+    display: flex;
+    list-style: none !important;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.header-menu li{
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.header-menu li a{
+    text-decoration: none;
+    color: black
+}
+
+.header-menu li a:hover{
+    /* text-decoration: none; */
+    color: #7f7272
+}
+
+.main-heading{
+    position: absolute;
+    top:40%;
+    left:30%
+}
+
+label{
+    font-size: 18px;
+    font-weight: 600
+}

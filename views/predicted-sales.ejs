@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Kitchen Display System</title>
+    <link rel="icon" href="favicon.png">
+    <link href='style.css' rel='stylesheet' />
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+    <select id='product'>
+        <option>-- Select Product --</option>
+        <% for(var i in products){ %>
+            <option value=<%=i %>>
+                <%= products[i] %>
+            </option>
+        <% } %>
+    </select>
+    <input id='quantity' placeholder="Enter Predicted Quantity" />
+    <button id='predSaleBtn'>Predict Sales</button>
+
+    <br>
+    <br>
+    <label>Predicted Sales</label>
+    <br>
+    <br>
+    <table border=1 cellpadding=5 cellspacing=0 id='predicted_sales_list'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Predicted Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < data[1].predicted_sales.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= products[data[1].predicted_sales[i].product] %>
+                    </td>
+                    <td>
+                        <%= data[1].predicted_sales[i].quantity %>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- Custom js -->
+    <script src='product.js'></script>
+    <!-- -->
+</body>
+
+</html>
