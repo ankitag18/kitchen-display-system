@@ -53,7 +53,7 @@ module.exports = function (app) {
     });
 
     app.post('/predicted-sales', urlEncodedParser, function (req, res) {
-        //req.body.product = products[req.body.product];
+        /////////////req.body.product = products[req.body.product];
         data[1].predicted_sales = data[1].predicted_sales.filter((item) => {
             if (item.product == req.body.product) {
                 req.body.quantity = parseInt(req.body.quantity) + parseInt(item.quantity);
